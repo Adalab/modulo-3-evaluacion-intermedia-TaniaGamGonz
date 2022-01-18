@@ -73,7 +73,7 @@ function App() {
           <label htmlFor="searchInput" className='search__label'>Busar por nombre: 
             <input type="text" name="searchInput" id="searchInput" onChange={handleInputSearch} value={searchInput}/>
           </label>
-          <select name="counselor" id="counselor" onChange={handleSelect} defaultValue={"Selecciona un tutor"}>
+          <select name="counselor" id="counselor" onChange={handleSelect} >
               <option value="" selected disabled>Selecciona un tutor</option>
               <option value="Dayana">Dayana</option>
               <option value="Iván">Ivan</option>
