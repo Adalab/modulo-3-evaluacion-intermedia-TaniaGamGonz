@@ -6,6 +6,7 @@ function App() {
   //State variables
   const [adalabersData, setAdalabersData] = useState([]);
   const [adalaber, setAdalaber] = useState({});
+  const [selectedCounselor, setSelectedCounselor] = useState('');
   const [searchInput, setSearchInput] = useState('');
 
 
@@ -18,8 +19,12 @@ function App() {
 
     //Render data
     const renderAdalabers = () => {
-      return adalabersData.filter((adalaber)=>{
+      return adalabersData
+      .filter((adalaber)=>{
         return adalaber.name.toLowerCase().includes(searchInput.toLowerCase());
+      })
+      .filter((adalaber)=>{
+        return adalaber.counselor.toLowerCase().includes(selectedCounselor.toLowerCase());
       })
       .map( adalaber => {
         return(
@@ -51,6 +56,11 @@ function App() {
       const inputSearchValue = event.target.value;
       setSearchInput(inputSearchValue);
     }
+    const handleSelect = (event) =>{
+      const selectedCounselorByUser = event.target.value;
+      setSelectedCounselor(selectedCounselorByUser);
+
+    }
     
 
   return (
@@ -63,6 +73,14 @@ function App() {
           <label htmlFor="searchInput" className='search__label'>Busar por nombre: 
             <input type="text" name="searchInput" id="searchInput" onChange={handleInputSearch} value={searchInput}/>
           </label>
+          <select name="counselor" id="counselor" onChange={handleSelect} defaultValue={"Selecciona un tutor"}>
+              <option value="" selected disabled>Selecciona un tutor</option>
+              <option value="Dayana">Dayana</option>
+              <option value="Iván">Ivan</option>
+              <option value="Yanelis">Yanelis</option>
+              <option value="">Todos</option>
+            </select>
+
         </form>
         <table>
         <thead>
