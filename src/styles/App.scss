@@ -58,6 +58,12 @@ form {
     margin-left: 10px;
   }
 }
+select {
+  width: fit-content;
+  border: 0;
+  background-color: #f2f2ff;
+  padding: 10px;
+}
 label {
   width: 24%;
   font-size: 1.7rem;
