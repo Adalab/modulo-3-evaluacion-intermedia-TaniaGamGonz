@@ -7,6 +7,10 @@ html {
   margin: 0;
   padding: 0;
 }
+ul,
+ol {
+  list-style: none;
+}
 //Start styles
 header {
   padding: 20px 10px;
@@ -38,6 +42,10 @@ th {
 td {
   padding: 5px;
   font-size: 1.5rem;
+}
+a {
+  cursor: pointer;
+  color: #28cc9e;
 }
 
 //Form styles

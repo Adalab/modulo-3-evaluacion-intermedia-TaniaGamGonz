@@ -32,6 +32,11 @@ function App() {
             <td>{adalaber.name}</td>
             <td>{adalaber.counselor}</td>
             <td>{adalaber.speciality}</td>
+            <td>
+              <ul>{adalaber.social_networks.map( socialNetwork => { 
+              return  <li> <a href={socialNetwork.url} target='_blank' rel='noreferrer'>{socialNetwork.name}</a></li>})}
+              </ul>
+            </td>
           </tr>
         )
       })
@@ -45,6 +50,7 @@ function App() {
         name : '',
         counselor: '',
         speciality: '',
+        socialNetworks: '',
       });
     }
     const handleInput = (event)=>{
@@ -73,8 +79,8 @@ function App() {
           <label htmlFor="searchInput" className='search__label'>Busar por nombre: 
             <input type="text" name="searchInput" id="searchInput" onChange={handleInputSearch} value={searchInput}/>
           </label>
-          <select name="counselor" id="counselor" onChange={handleSelect} defaultValue={"Selecciona un tutor"}>
-              <option value="" disabled>Selecciona un tutor</option>
+          <select name="counselor" id="counselor" onChange={handleSelect} >
+              <option value="" selected disabled>Selecciona un tutor</option>
               <option value="Dayana">Dayana</option>
               <option value="Iván">Ivan</option>
               <option value="Yanelis">Yanelis</option>
@@ -88,6 +94,7 @@ function App() {
             <th>Nombre</th>
             <th>Tutora</th>
             <th>Especialidad</th>
+            <th>Redes sociales</th>
           </tr>
         </thead>
         <tbody>
