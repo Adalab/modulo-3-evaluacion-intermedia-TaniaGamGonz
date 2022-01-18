@@ -6,6 +6,7 @@ function App() {
   //State variables
   const [adalabersData, setAdalabersData] = useState([]);
   const [adalaber, setAdalaber] = useState({});
+  const [searchInput, setSearchInput] = useState('');
 
 
   //Variables
@@ -17,7 +18,10 @@ function App() {
 
     //Render data
     const renderAdalabers = () => {
-      return adalabersData.map( adalaber => {
+      return adalabersData.filter((adalaber)=>{
+        return adalaber.name.toLowerCase().includes(searchInput.toLowerCase());
+      })
+      .map( adalaber => {
         return(
           <tr key={adalaber.id}>
             <td>{adalaber.name}</td>
@@ -43,6 +47,10 @@ function App() {
       const inputName = event.target.name;
       setAdalaber({...adalaber, [inputName] : inputValue});
     }
+    const handleInputSearch = (event)=>{
+      const inputSearchValue = event.target.value;
+      setSearchInput(inputSearchValue);
+    }
     
 
   return (
@@ -50,7 +58,13 @@ function App() {
       <header>
         <h1>Adalabers</h1>
       </header>
-      <table>
+      <section>
+        <form onSubmit={(event)=>{event.preventDefault()}}>
+          <label htmlFor="searchInput" className='search__label'>Busar por nombre: 
+            <input type="text" name="searchInput" id="searchInput" onChange={handleInputSearch} value={searchInput}/>
+          </label>
+        </form>
+        <table>
         <thead>
           <tr>
             <th>Nombre</th>
@@ -61,7 +75,8 @@ function App() {
         <tbody>
           {renderAdalabers()}
         </tbody>
-      </table>
+        </table>
+      </section>
       <section>
         <h2>Añadir una adalaber</h2>
         <form action="" onSubmit={handleSubmit}>

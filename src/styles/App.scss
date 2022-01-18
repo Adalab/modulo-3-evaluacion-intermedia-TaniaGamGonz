@@ -51,6 +51,13 @@ form {
   flex-direction: column;
   padding: 10px;
 }
+.search__label {
+  width: 30%;
+  justify-content: start;
+  input {
+    margin-left: 10px;
+  }
+}
 label {
   width: 24%;
   font-size: 1.7rem;
